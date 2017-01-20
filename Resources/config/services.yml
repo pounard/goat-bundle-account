@@ -1,0 +1,20 @@
+services:
+
+    goat_account.account_mapper:
+        class: Goat\AccountBundle\Mapper\AccountMapper
+        arguments: ['@goat.session']
+        tags: [{name: goat.mapper, alias: "Goat:Account"}]
+
+    goat_account.account_provider:
+        class: 'Goat\AccountBundle\Security\User\GoatAccountProvider'
+        arguments: ['@goat_account.account_mapper']
+
+#    goat_account.session_storage:
+#        class: 'Goat\AccountBundle\Session\Storage\Handler\GoatSessionHandler'
+#        calls:
+#          - [setAccountSession, ["@=service('pomm').getSession('default')"]]
+
+    goat.security.access.account_voter:
+        class: Goat\AccountBundle\Security\Authorization\Voter\AccountVoter
+        public: false
+        tags: [{name: security.voter}]
