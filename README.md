@@ -10,14 +10,12 @@ Only working with PostgreSQL as of now (due to RETURNING SQL clause usage).
 Install this bundle using composer:
 
 ```sh
+composer require makinacorpus/goat
+composer require makinacorpus/goat-bundle
 composer require makinacorpus/goat-bundle-account
 ```
 
 Inject the necessary SQL tables into your database:
-
-```sh
-psql -U username -d myDatabase -f vendor/makinacorpus/goat-bundle-account/Resources/docs/install.sql
-```
 
 
 Register it into your kernel class:
@@ -29,6 +27,7 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // ... (your other bundles)
+            new Goat\Bundle\GoatBundle(),
             new Goat\Bundle\GoatAccountBundle(),
         ];
 
@@ -36,6 +35,16 @@ class AppKernel extends Kernel
     }
 }
 ```
+
+# Install SQL schema
+
+```sh
+bin/console -vvv updater:run
+```
+
+The ``-vvv`` switch is optional, but since you are trying a very experimental
+project, I'd very much like you to give me a full stack trace in case of any
+error.
 
 
 # Configure

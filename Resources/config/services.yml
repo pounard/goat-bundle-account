@@ -18,3 +18,7 @@ services:
         class: Goat\AccountBundle\Security\Authorization\Voter\AccountVoter
         public: false
         tags: [{name: security.voter}]
+
+    goat_account.account_updater:
+        class: Goat\AccountBundle\Installer\AccountUpdater
+        tags: [{name: goat.updater}]
