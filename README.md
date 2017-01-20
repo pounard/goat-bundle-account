@@ -16,7 +16,7 @@ composer require makinacorpus/goat-bundle-account
 Inject the necessary SQL tables into your database:
 
 ```sh
-psql -U username -d myDatabase -f Resources/docs/install.sql
+psql -U username -d myDatabase -f vendor/makinacorpus/goat-bundle-account/Resources/docs/install.sql
 ```
 
 
