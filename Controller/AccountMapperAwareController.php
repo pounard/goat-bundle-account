@@ -21,7 +21,7 @@ trait AccountMapperAwareController
      *
      * @return Account
      */
-    protected function findAccountOr404($id) : Account
+    final protected function findAccountOr404($id) : Account
     {
         try {
             return $this->getMapper('Goat:Account')->findOne($id);
@@ -35,7 +35,7 @@ trait AccountMapperAwareController
      *
      * @return Account
      */
-    protected function getUserAccountOrDie() : Account
+    final protected function getUserAccountOrDie() : Account
     {
         $user = $this->getUser();
 
