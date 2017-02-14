@@ -136,9 +136,9 @@ class Account
     /**
      * Get user creation datetime
      *
-     * @return \DateTimeInterface
+     * @return \DateTime
      */
-    public function getCreatedAt() : \DateTimeInterface
+    public function getCreatedAt() : \DateTime
     {
         return $this->ts_added;
     }
