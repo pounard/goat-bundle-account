@@ -76,7 +76,7 @@ class SecurityController extends Controller
 
             if ($form->isValid() && $matches) {
 
-                $this->getAccountModel()->updatePassword($account, $data['password1']);
+                $this->getAccountMapper()->updatePassword($account, $data['password1']);
 
                 // Do never tell the user if the mail exist or not
                 $this->addFlash('success', "Your password has been changed");
@@ -118,7 +118,7 @@ class SecurityController extends Controller
         if (Request::METHOD_POST === $request->getMethod()) {
             if ($form->handleRequest($request)->isValid()) {
 
-                $model    = $this->getAccountModel();
+                $model    = $this->getAccountMapper();
                 $account  = $model->findUserByMail($form['email']->getData());
 
                 if ($account) {
