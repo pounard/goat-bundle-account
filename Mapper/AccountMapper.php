@@ -6,10 +6,9 @@ namespace Goat\AccountBundle\Mapper;
 
 use Goat\AccountBundle\Entity\Account;
 use Goat\AccountBundle\Security\Crypt;
-use Goat\Bundle\Annotation as Goat;
-use Goat\Core\Client\ConnectionInterface;
 use Goat\Mapper\Error\EntityNotFoundError;
 use Goat\Mapper\WritableSelectMapper;
+use Goat\Runner\RunnerInterface;
 
 /**
  * Account mapper
@@ -19,11 +18,11 @@ class AccountMapper extends WritableSelectMapper
     /**
      * Default contructor
      *
-     * @param ConnectionInterface $connection
+     * @param RunnerInterface $runner
      */
-    public function __construct(ConnectionInterface $connection)
+    public function __construct(RunnerInterface $runner)
     {
-        parent::__construct($connection, Account::class, ['id'], $connection->select('account'));
+        parent::__construct($runner, Account::class, ['id'], $runner->select('account'));
     }
 
     /**

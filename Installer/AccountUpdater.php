@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Goat\AccountBundle\Installer;
 
 use Goat\Bundle\Installer\Updater;
-use Goat\Core\Client\ConnectionInterface;
-use Goat\Core\Transaction\Transaction;
+use Goat\Runner\RunnerInterface;
+use Goat\Runner\Transaction;
 
 /**
  * Self installer.
@@ -16,9 +16,9 @@ class AccountUpdater extends Updater
     /**
      * {@inheritdoc}
      */
-    public function installSchema(ConnectionInterface $connection, Transaction $transaction)
+    public function installSchema(RunnerInterface $runner, Transaction $transaction)
     {
-        $connection->query(<<<EOT
+        $runner->query(<<<EOT
 CREATE TABLE account (
     id  SERIAL PRIMARY KEY,
     mail VARCHAR(255) UNIQUE NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE account (
 EOT
         );
 
-        $connection->query(<<<EOT
+        $runner->query(<<<EOT
 CREATE TABLE account_onetime (
     id_account INTEGER NOT NULL,
     login_token VARCHAR(255) DEFAULT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE account_onetime (
 EOT
         );
 
-        $connection->query(<<<EOT
+        $runner->query(<<<EOT
 CREATE TABLE session (
     id VARCHAR(255) NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT NOW(),
