@@ -3,7 +3,7 @@ services:
     goat_account.account_mapper:
         class: Goat\AccountBundle\Mapper\AccountMapper
         arguments: ['@goat.session']
-        tags: [{name: goat.mapper, alias: "Goat:Account"}]
+        tags: [{name: goat.mapper, alias: "Goat:Account", class: "Goat\\AccountBundle\\Entity\\Account"}]
 
     goat_account.account_provider:
         class: 'Goat\AccountBundle\Security\User\GoatAccountProvider'
