@@ -1,11 +1,13 @@
 services:
 
     goat_account.account_mapper:
+        public: true
         class: Goat\AccountBundle\Mapper\AccountMapper
         arguments: ['@goat.session']
         tags: [{name: goat.mapper, alias: "Goat:Account", class: "Goat\\AccountBundle\\Entity\\Account"}]
 
     goat_account.account_provider:
+        public: false
         class: 'Goat\AccountBundle\Security\User\GoatAccountProvider'
         arguments: ['@goat_account.account_mapper']
 
@@ -15,10 +17,23 @@ services:
 #          - [setAccountSession, ["@=service('pomm').getSession('default')"]]
 
     goat.security.access.account_voter:
-        class: Goat\AccountBundle\Security\Authorization\Voter\AccountVoter
         public: false
+        class: Goat\AccountBundle\Security\Authorization\Voter\AccountVoter
         tags: [{name: security.voter}]
 
     goat_account.account_updater:
+        public: true
         class: Goat\AccountBundle\Installer\AccountUpdater
         tags: [{name: goat.updater}]
+
+    goat_account.command.account_password:
+        public: false
+        class: Goat\AccountBundle\Command\AccountPasswordCommand
+        arguments: ['@goat.installer']
+        tags: [{name: console.command, comand: 'updater:run-single'}]
+
+    goat_account.command.create_account:
+        public: false
+        class: Goat\AccountBundle\Command\CreateAccountCommand
+        arguments: ['@goat.installer']
+        tags: [{name: console.command, comand: 'updater:status'}]

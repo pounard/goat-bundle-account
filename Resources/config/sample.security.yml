@@ -43,7 +43,7 @@ security:
                 default_target_path:  goat_account.home
             logout:
                 path:                 goat_account.logout
-                target:               _welcome
+                target:               index
             # allow both anonymous and authenticated users, knowing that all
             # access checks needs to be done at the controller level, harsh
             # but working... we cannot provide more than one firewall else

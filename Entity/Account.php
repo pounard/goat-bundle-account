@@ -25,8 +25,6 @@ class Account
 
     /**
      * Get identifier
-     *
-     * @return int
      */
     public function getId() : int
     {
@@ -35,8 +33,6 @@ class Account
 
     /**
      * Get mail
-     *
-     * @return string
      */
     public function getMail() : string
     {
@@ -45,8 +41,6 @@ class Account
 
     /**
      * Get username
-     *
-     * @return string
      */
     public function getUsername() : string
     {
@@ -55,8 +49,6 @@ class Account
 
     /**
      * Get username
-     *
-     * @return string
      */
     public function getPassword() : string
     {
@@ -65,8 +57,6 @@ class Account
 
     /**
      * Get salt
-     *
-     * @return string
      */
     public function getSalt() : string
     {
@@ -75,8 +65,6 @@ class Account
 
     /**
      * Get database
-     *
-     * @return string
      */
     public function getDatabase() : string
     {
@@ -115,8 +103,6 @@ class Account
 
     /**
      * Is user enabled
-     *
-     * @return bool
      */
     public function isActive() : bool
     {
@@ -125,8 +111,6 @@ class Account
 
     /**
      * Is user admin
-     *
-     * @return bool
      */
     public function isAdmin() : bool
     {
@@ -135,10 +119,8 @@ class Account
 
     /**
      * Get user creation datetime
-     *
-     * @return \DateTime
      */
-    public function getCreatedAt() : \DateTime
+    public function getCreatedAt() : \DateTimeInterface
     {
         return $this->ts_added;
     }

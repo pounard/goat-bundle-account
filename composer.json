@@ -21,6 +21,7 @@
     "require" : {
         "makinacorpus/goat" : "*",
         "makinacorpus/goat-bundle" : "*",
+        "ext-mcrypt" : "*",
         "php" : ">=7.0",
         "symfony/framework-bundle": "^3.2 || ^4"
     },

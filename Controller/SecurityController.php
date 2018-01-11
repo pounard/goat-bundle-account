@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Goat\AccountBundle\Controller;
 
 use Goat\AccountBundle\Security\Crypt;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -30,7 +29,7 @@ class SecurityController extends Controller
             $this->addFlash('danger', $error->getMessage());
         }
 
-        return $this->render('GoatAccountBundle:Security:login.html.twig');
+        return $this->render('@GoatAccount/security/login.html.twig');
     }
 
     /**
@@ -90,7 +89,7 @@ class SecurityController extends Controller
             }
         }
 
-        return $this->render('GoatAccountBundle:Security:changePassword.html.twig', [
+        return $this->render('@GoatAccount/security/change-password.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -148,22 +147,19 @@ class SecurityController extends Controller
                         ->setFrom('media@processus.org')
                         ->setTo($account->mail)
                         ->setBody(
-                            $this->renderView('GoatAccountBundle:Email:requestPassword.html.twig', [
+                            $this->renderView('@GoatAccount/email/request-password.html.twig', [
                                 'account' => $account,
                                 'token'   => $token,
                             ]),
                             'text/html'
                         )
-                        /*
-                         * If you also want to include a plaintext version of the message
                         ->addPart(
                             $this->renderView(
-                                'Emails/registration.txt.twig',
-                                array('name' => $name)
+                                '@GoatAccount/emails/registration.txt.twig',
+                                [] //array('name' => $name)
                             ),
                             'text/plain'
                         )
-                        */
                     ;
                     $this->get('mailer')->send($message);
                 }
@@ -178,7 +174,7 @@ class SecurityController extends Controller
             }
         }
 
-        return $this->render('GoatAccountBundle:Security:requestPassword.html.twig', [
+        return $this->render('@GoatAccount/security/request-password.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -260,7 +256,7 @@ class SecurityController extends Controller
             }
         }
 
-        return $this->render('GoatAccountBundle:Security:oneTimeLogin.html.twig', [
+        return $this->render('@GoatAccount/security/one-time-login.html.twig', [
             'form' => $form->createView(),
         ]);
     }

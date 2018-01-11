@@ -78,7 +78,7 @@ class CreateAccountCommand extends ContainerAwareCommand
 
         $this
             ->accountMapper
-            ->getConnection()
+            ->getRunner()
             ->insertValues('account')
             ->columns(['mail', 'user_name', 'is_admin', 'is_active'])
             ->values([$mail, $name, $input->getOption('admin'), !$input->getOption('disabled')])

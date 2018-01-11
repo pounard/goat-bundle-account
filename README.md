@@ -90,7 +90,7 @@ If you wish to use the provided user menu, you can set this into your main twig
 template anywhere you wish to:
 
 ```twig
-{% include 'GoatAccountBundle:Account:status.html.twig' %}
+{% include '@GoatAccount/account/status.html.twig' %}
 ```
 
 

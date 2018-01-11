@@ -10,6 +10,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('GoatAccountBundle:Default:index.html.twig');
+        return $this->render('@GoatAccount/default/index.html.twig');
     }
 }

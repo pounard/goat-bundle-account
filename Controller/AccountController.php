@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Goat\AccountBundle\Controller;
 
-use Goat\AccountBundle\Entity\Account;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AccountController extends Controller
@@ -33,6 +31,6 @@ class AccountController extends Controller
 
         $this->denyAccessUnlessGranted('view', $account);
 
-        return $this->render('GoatAccountBundle:Account:view.html.twig', ['account' => $account]);
+        return $this->render('@GoatAccount/account/view.html.twig', ['account' => $account]);
     }
 }
