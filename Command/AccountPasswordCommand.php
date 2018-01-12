@@ -2,37 +2,25 @@
 
 namespace Goat\AccountBundle\Command;
 
-use Goat\AccountBundle\Mapper\AccountMapperAwareTrait;
-
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Goat\AccountBundle\Mapper\AccountMapper;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class AccountPasswordCommand extends ContainerAwareCommand
+class AccountPasswordCommand extends Command
 {
-    use AccountMapperAwareTrait;
+    private $accountMapper;
 
     /**
-     * Hides trait constructor
-     *
-     * @param string $name
+     * Default constructor
      */
-    public function __construct($name = null)
+    public function __construct(AccountMapper $accountMapper)
     {
-        parent::__construct($name);
-    }
+        $this->accountMapper = $accountMapper;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        parent::setContainer($container);
-
-        $this->setAccountMapper($container->get('goat_account.account_mapper'));
+        parent::__construct();
     }
 
     /**
@@ -86,4 +74,3 @@ class AccountPasswordCommand extends ContainerAwareCommand
         $output->writeln('<info>password successfully set</info>');
     }
 }
-

@@ -24,16 +24,16 @@ services:
     goat_account.account_updater:
         public: true
         class: Goat\AccountBundle\Installer\AccountUpdater
-        tags: [{name: goat.updater}]
+        tags: [{name: goat.updater, priority: 1000}]
 
     goat_account.command.account_password:
         public: false
         class: Goat\AccountBundle\Command\AccountPasswordCommand
-        arguments: ['@goat.installer']
+        arguments: ['@goat_account.account_mapper']
         tags: [{name: console.command, comand: 'updater:run-single'}]
 
     goat_account.command.create_account:
         public: false
         class: Goat\AccountBundle\Command\CreateAccountCommand
-        arguments: ['@goat.installer']
+        arguments: ['@goat_account.account_mapper']
         tags: [{name: console.command, comand: 'updater:status'}]

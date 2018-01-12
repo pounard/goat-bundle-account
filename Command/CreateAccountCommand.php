@@ -2,39 +2,26 @@
 
 namespace Goat\AccountBundle\Command;
 
-use Goat\AccountBundle\Mapper\AccountMapperAwareTrait;
-
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Goat\AccountBundle\Mapper\AccountMapper;
+use Goat\Mapper\Error\EntityNotFoundError;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Console\Command\Command;
-use Goat\Mapper\Error\EntityNotFoundError;
+use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateAccountCommand extends ContainerAwareCommand
+class CreateAccountCommand extends Command
 {
-    use AccountMapperAwareTrait;
+    private $accountMapper;
 
     /**
-     * Hides trait constructor
-     *
-     * @param string $name
+     * Default constructor
      */
-    public function __construct($name = null)
+    public function __construct(AccountMapper $accountMapper)
     {
-        parent::__construct($name);
-    }
+        $this->accountMapper = $accountMapper;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setContainer(ContainerInterface $container = null)
-    {
-        parent::setContainer($container);
-
-        $this->setAccountMapper($container->get('goat_account.account_mapper'));
+        parent::__construct();
     }
 
     /**
@@ -53,7 +40,7 @@ class CreateAccountCommand extends ContainerAwareCommand
         ;
     }
 
-    /**app
+    /**
      * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
