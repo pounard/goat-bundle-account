@@ -19,14 +19,14 @@
         }
     },
     "require" : {
+        "ext-mcrypt" : "*",
         "makinacorpus/goat" : "*",
         "makinacorpus/goat-bundle" : "*",
-        "ext-mcrypt" : "*",
         "php" : ">=7.0",
-        "symfony/framework-bundle": "^3.2 || ^4"
+        "symfony/framework-bundle": "^3.2 || ^4",
+        "symfony/security": "^3.2 || ^4"
     },
     "require-dev" : {
-        "phpunit/phpunit" : "5.*",
-        "squizlabs/php_codesniffer": "^2.7"
+        "phpunit/phpunit" : "5.*"
     }
 }
