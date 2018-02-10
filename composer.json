@@ -19,7 +19,6 @@
         }
     },
     "require" : {
-        "ext-mcrypt" : "*",
         "makinacorpus/goat" : "*",
         "makinacorpus/goat-bundle" : "*",
         "php" : ">=7.0",
