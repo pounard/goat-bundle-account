@@ -3,13 +3,12 @@
 namespace Goat\AccountBundle\Security\User;
 
 use Goat\AccountBundle\Entity\Account;
-
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 class GoatUser implements AdvancedUserInterface
 {
     /**
-     * @var \Goat\AccountBundle\Model\Account
+     * @var \Goat\AccountBundle\Entity\Account
      */
     private $account;
 
@@ -29,22 +28,22 @@ class GoatUser implements AdvancedUserInterface
     private $salt;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $enabled;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $accountNonExpired;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $credentialsNonExpired;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $accountNonLocked;
 
@@ -70,7 +69,7 @@ class GoatUser implements AdvancedUserInterface
     /**
      * Get user account
      *
-     * @return \Goat\AccountBundle\Model\Account
+     * @return \Goat\AccountBundle\Entity\Account
      */
     public function getAccount()
     {

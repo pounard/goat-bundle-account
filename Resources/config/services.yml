@@ -1,6 +1,9 @@
 services:
 
     goat_account.account_mapper:
+        alias: Goat\AccountBundle\Mapper\AccountMapper
+
+    Goat\AccountBundle\Mapper\AccountMapper:
         public: true
         class: Goat\AccountBundle\Mapper\AccountMapper
         arguments: ['@goat.session']

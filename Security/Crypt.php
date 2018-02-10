@@ -67,7 +67,7 @@ class Crypt
      */
     static public function createSalt()
     {
-        return base64_encode(mcrypt_create_iv(self::SALT_BYTE_SIZE, MCRYPT_DEV_URANDOM));
+        return base64_encode(random_bytes(self::SALT_BYTE_SIZE));
     }
 
     /**
