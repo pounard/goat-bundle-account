@@ -31,13 +31,13 @@ class AccountMapper extends WritableSelectMapper
      * @param string $mail
      *
      * @throws EntityNotFoundError
-     *   In case account does not exists
+     *   In case account does not exists and $raiseErrorOnMissing is true
      *
      * @return Account
      */
-    public function findUserByMail(string $mail) : Account
+    public function findUserByMail(string $mail, $raiseErrorOnMissing = true) : Account
     {
-        return $this->findFirst(['mail' => $mail], true);
+        return $this->findFirst(['mail' => $mail], $raiseErrorOnMissing);
     }
 
     /**

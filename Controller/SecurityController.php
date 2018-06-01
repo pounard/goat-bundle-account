@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SecurityController extends Controller
 {
@@ -27,6 +28,8 @@ class SecurityController extends Controller
 
         if ($error) {
             $this->addFlash('danger', $error->getMessage());
+
+            return $this->render('@GoatAccount/security/login.html.twig', [], new Response('', 400));
         }
 
         return $this->render('@GoatAccount/security/login.html.twig');
